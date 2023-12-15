@@ -37,7 +37,8 @@ def clickFunction(event):
     # of the length, you can delete using the special value END to go all the way
     # to the end of the entry widget
     #a_entry.delete(0,END)
-    a_entry.insert(0,answer)
+    a_entry.insert(3,answer)
+
 
 
 l1 = Label(win, text="Enter a number")
