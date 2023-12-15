@@ -17,7 +17,7 @@ def clickFunction(event):
     n= ne.get()
     sn= se.get()
     g = ge.get()
-    infoinsert = print(f"Student name= {n}\nStudent number= {sn}\nGrade= {g}")
+    infoinsert = (f"Student name= {n} Student number= {sn} Grade= {g}")
     ie.delete(0,END)
     ie.insert(0, infoinsert)
 
@@ -25,17 +25,18 @@ def clickFunction(event):
 window = tk.Tk()
 window.title("Student Database")
 
-name = tk.Label(text= "Name: ")
-studentnum = tk.Label(text = "Student #: ")
-grade = tk.Label(text= "Grade: ")
-info = tk.Button (text= "Information: ")
-
-
-ne= tk.Entry(width= 20)
-se= tk.Entry(width= 20)
-ge= tk.Entry(width= 20)
-ie= tk.Entry(width= 20)
+name = tk.Label(window, text= "Name: ")
+studentnum = tk.Label(window,text = "Student #: ")
+grade = tk.Label(window,text= "Grade: ")
+info = tk.Button (window,text= "Information: ")
 info.bind("<Button>",clickFunction)
+
+ne= tk.Entry(width= 200)
+se= tk.Entry(width= 200)
+ge= tk.Entry(width= 200)
+ie= tk.Entry(width= 200)
+
+
 
 name.grid(row = 1, column = 1)
 studentnum.grid(row = 2, column = 1 )
