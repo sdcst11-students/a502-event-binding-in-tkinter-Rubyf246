@@ -21,6 +21,54 @@ from tkinter import ttk
 window = tk.Tk()
 window.title("Factoring Simple Trinomials")
 
+def factor_monic_quadratic_trinomial( b, c):
+    a = 1
+    # Calculate discriminant
+    discriminant = b**2 - 4*a*c
+    
+    # Check if discriminant is non-negative
+    if discriminant >= 0:
+        # Calculate solutions
+        x1 = (-b + discriminant**0.5) / (2*a)
+        x2 = (-b - discriminant**0.5) / (2*a)
+        
+        print (b)
+        print (c)
+        # Return the factorized form
+        if x1>=0 and x2>=0:
+             return f"(x - {x1:.2f})(x - {x2:.2f})"
+        else :
+            if x1>=0 and x2<0:
+                x2 = -1 * x2
+                return f"(x - {x1:.2f})(x + {x2:.2f})"
+            else:
+                if x1<0 and x2>=0:
+                    x1 = -1 * x1
+                    return f"(x + {x1:.2f})(x - {x2:.2f})"
+                else:
+                    x1 = -1 * x1
+                    x2 = -1 * x2
+                    return f"(x + {x1:.2f})(x + {x2:.2f})"
+                        
+                
+    else:
+        return "Cannot factorize (complex roots)"
+
+
+def clickFunction(event):
+
+    print(event)
+    B = bentry.get()
+    B = float(B)
+
+    C = centry.get()
+    C = float(C)
+
+    result = factor_monic_quadratic_trinomial( B, C)
+    print(result)
+    aentry.delete(0,END)
+    aentry.insert(3,result)
+
 FST = tk.Label(window, text= " Factoring Simple Trinomials ")
 
 b = tk.Label(window, text = "b")
@@ -35,6 +83,9 @@ equal = tk.Label(window, text="=")
 calculate = tk.Button (window,text= " Calculate ")
 ans= tk.Label(window, text= "answer ======")
 aentry= tk.Entry(width= 20)
+
+calculate.bind("<Button>",clickFunction)
+
 
 FST.grid(row = 1, column = 1, columnspan= 5)
 
